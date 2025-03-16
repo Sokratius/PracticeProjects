@@ -1,0 +1,21 @@
+h1 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#field {
+    width: 700px;
+    height: 447px;
+    border: 10px solid black;
+    background-color: #00FF00;
+    overflow: hidden;
+    position: relative;
+    background-image: url("field.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-inline: auto;
+}
+
+#ball {
+    position: absolute;
+}
