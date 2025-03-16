@@ -1,0 +1,42 @@
+body {
+
+}
+
+.article-title {
+    margin: 0;
+    text-align: center;
+}
+
+.article {
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    overflow: auto;
+    border: 8px solid black;
+    font-size: 22px;
+    margin-inline: auto;
+    background-color: blanchedalmond;
+    border-radius: 5px;
+    margin-top: 200px;
+    
+
+}
+
+.article-content {
+    text-align: justify;
+}
+
+.expander {
+    position: absolute;
+    background-color: blanchedalmond;
+    font-size: 22px;
+    transition-property: background-color, color, font-size;
+    transition-duration: 500ms;
+    border-radius: 5px;
+}
+
+.expander:hover {
+    color: black;
+    font-size: 24px;
+    background-color: white;
+}
