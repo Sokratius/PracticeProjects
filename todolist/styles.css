@@ -60,7 +60,7 @@ body {
 .timer-panel,
 .time-options {
     background: white;
-    padding: 30px;
+    padding: 20px 30px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
     transition: var(--transition);
@@ -69,10 +69,15 @@ body {
     text-align: center;
 }
 
+.session-counter {
+    font-weight: bold;
+    margin-top: 20px;
+
+}
+
 .time-options>label {
     display: flex;
     column-gap: 20px;
-
 }
 
 .timer-panel:hover,

@@ -23,6 +23,9 @@ const timeSettingsElems = {
     timeSettingSubmitting: document.querySelector('.submit-options'),
 };
 
+let allSessionsElem = document.querySelector('.session-counter-number');
+allSessionsElem.textContent = 1;
+
 let focusTime = 25 * 60;
 let shortBreakTime = 5 * 60;
 let longBreakTime = 10 * 60;
@@ -30,6 +33,7 @@ let currentTimerTime = focusTime;
 let timerID = null;
 let currentSession = sessions.focus;
 let sessionCounter = 0;
+let allSessions = 1;
 
 const validateInputs = () => {
     const inputs = [
@@ -125,6 +129,8 @@ function changeSession() {
         currentSession = (sessionCounter >= parseInt(timeSettingsElems.longBreakInterval.value)) ? sessions.longBreak : sessions.shortBreak;
     } else {
         currentSession = sessions.focus;
+        allSessions++;
+        allSessionsElem.textContent = allSessions;
     }
 
     sessionCounter = (currentSession === sessions.longBreak) ? 0 : sessionCounter;
