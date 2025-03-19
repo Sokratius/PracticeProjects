@@ -27,8 +27,10 @@ let timeSettingsElems = {
     focusTimeSetting: document.querySelector('.focus-time'),
     shortBreakTimeSetting: document.querySelector('.short-break-time'),
     longBreakTimeSetting: document.querySelector('.long-break-time'),
+    longBreakInterval: document.querySelector('.long-break-interval'),
     timeSettingSubmitting: document.querySelector('.submit-options'),
 };
+
 
 timeSettingsElems.timeSettingSubmitting.addEventListener('click', () => {
     focusTime = parseInt(timeSettingsElems.focusTimeSetting.value) * 60 || 1500;
@@ -42,6 +44,8 @@ timeSettingsElems.timeSettingSubmitting.addEventListener('click', () => {
     setTimerTime(currentTimerTime);
 });
 
+
+
 controls.start_stop.addEventListener('click', (event) => {
     if (event.currentTarget.textContent.trim() === 'Start') {
         event.currentTarget.textContent = 'Stop';
@@ -52,7 +56,7 @@ controls.start_stop.addEventListener('click', (event) => {
                 changeSession();
                 bell.play();
             }
-        }, 1000);
+        }, 1);
     } else {
         event.currentTarget.textContent = 'Start';
         clearInterval(timerID);
@@ -88,10 +92,12 @@ function changeSession() {
 
     if (currentSession === sessions.focus) {
         sessionCounter++;
-        currentSession = (sessionCounter >= 4) ? sessions.longBreak : sessions.shortBreak;
+        currentSession = (sessionCounter >= 3) ? sessions.longBreak : sessions.shortBreak;
     } else {
         currentSession = sessions.focus;
     }
+
+    sessionCounter = (currentSession === sessions.longBreak) ? 0 : sessionCounter;
 
     Object.values(sessions).forEach(session => session.removeAttribute('data-current-session'));
     currentSession.setAttribute('data-current-session', '');
