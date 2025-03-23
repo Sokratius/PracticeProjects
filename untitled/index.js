@@ -1,12 +1,16 @@
-function myFunc(event) {
-    if (event.target.tagName === 'DIV' && !event.target.classList.contains('parent')) {
-        let customClick = new CustomEvent('custom-click', {bubbles: true, cancelable: true});
-        event.target.dispatchEvent(customClick);
+let deleteButton = document.getElementById('delete');
+
+deleteButton.addEventListener('click', (event) => {
+    let delBtnEvent = new CustomEvent('delete-item', {bubbles: true, cancelable: true});
+
+    if (document.dispatchEvent(delBtnEvent)) {
+        alert("Удалено");
     }
-}
+});
 
-document.onclick = myFunc;
-
-document.addEventListener('custom-click', event => {
-    alert('custom-click');
-})
+document.addEventListener('delete-item', event => {
+    let arrangement = confirm("Are you sure that you want to delete?");
+    if (!arrangement) {
+        event.preventDefault();
+    }
+});
