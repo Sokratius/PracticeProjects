@@ -1,13 +1,15 @@
-document.addEventListener('click', (event) => {
-    let thumbnail = event.target.closest('a');
-    if (!thumbnail) return undefined;
+let input = document.querySelector('input');
+let btn = document.getElementById('btn');
 
-    showThumbnail(thumbnail.href, thumbnail.title)
-    event.preventDefault();
+btn.onclick = function() {
+    let inputChanged = new CustomEvent('input-changed', {bubbles: true, detail: {name: 'input-changed', value: input.value}});
+    btn.dispatchEvent(inputChanged);
+};
 
-    function showThumbnail(href, title) {
-        largeImg.src = href;
-        largeImg.alt= title;
-    }
+btn.addEventListener('input-changed', event => {
+    alert(event.detail.value);
+});
 
+document.addEventListener('input-changed', event => {
+    alert(event.detail.value);
 });
