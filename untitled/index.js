@@ -1,15 +1,12 @@
-let input = document.querySelector('input');
-let btn = document.getElementById('btn');
+function myFunc(event) {
+    if (event.target.tagName === 'DIV' && !event.target.classList.contains('parent')) {
+        let customClick = new CustomEvent('custom-click', {bubbles: true, cancelable: true});
+        event.target.dispatchEvent(customClick);
+    }
+}
 
-btn.onclick = function() {
-    let inputChanged = new CustomEvent('input-changed', {bubbles: true, detail: {name: 'input-changed', value: input.value}});
-    btn.dispatchEvent(inputChanged);
-};
+document.onclick = myFunc;
 
-btn.addEventListener('input-changed', event => {
-    alert(event.detail.value);
-});
-
-document.addEventListener('input-changed', event => {
-    alert(event.detail.value);
-});
+document.addEventListener('custom-click', event => {
+    alert('custom-click');
+})
